@@ -39,10 +39,14 @@
                         <img src="{{asset("storage/".$product->image)}}" width='240' class='img-thumbnail'>
                     </div>
                 </div>
-                
+
                 <div class="form-group ">
                     <label for="price">new price</label>
                     <input   type="number" class="form-control" value="{{old('price')??$product->price}}" id="price" name="price">
+                </div>
+                <div class="form-group ">
+                    <label for="model">Model</label>
+                    <input   type="text" class="form-control" value="{{old('model')??$product->model}}" id="model" name="model">
                 </div>
 
                 <div class="form-group">

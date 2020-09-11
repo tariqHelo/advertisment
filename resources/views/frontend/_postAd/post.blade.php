@@ -143,10 +143,15 @@
 							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 						</span>
                 </button>
-                <a href="{{route('home-view')}}">
-                                <button type="button" class="btn default">Cancel</button>
-                            </a>
             </div>
+            <div class="container-contact100-form-btn">
+                <a href="{{route('home-view')}}">
+                  <button  type="button"  class="btn btn-danger contact100-form-btn" ><span>
+							Exit
+							<i class="fa fa-long-arrow-left m-l-7" ></i>
+						</span></button>
+                </a>
+             </div>
         </form>
     </div>
 </div>

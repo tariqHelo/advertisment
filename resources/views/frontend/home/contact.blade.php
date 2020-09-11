@@ -6,6 +6,11 @@
     use App\Models\Setting;
 $settings = Setting::first();
 ?> 
+<?php
+    use App\Models\About;
+$abouts = About::first();
+?> 
+
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{asset('classyads/images/hero_1.jpg')}}" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -94,9 +99,10 @@ $settings = Setting::first();
             </div>
             
             <div class="p-4 mb-3 bg-white">
+                
               <h3 class="h5 text-black mb-3">More Info</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
-              <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
+              <p>{{ $abouts->whyUs}}</p>
+              {{-- <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p> --}}
             </div>
 
           </div>

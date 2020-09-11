@@ -29,8 +29,7 @@ class HomeController extends Controller
         return view("frontend.home.contact");
     }  
     public function blog(){
-        $postss=Post::where('published',1)->orderBy("id","desc")->paginate(3);
-        return view("frontend.home.blog")->with('postss',$postss);
+        return view("frontend.home.blog");
     } 
     
     public function postContact(CreateRequest $request){

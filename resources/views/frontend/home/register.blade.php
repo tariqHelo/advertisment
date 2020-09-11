@@ -24,7 +24,7 @@
 
             
 
-            <form action="#" class="p-5 bg-white">
+            <form action="{{ route('regUser') }}" class="p-5 bg-white">
              
               <div class="row form-group">
                 

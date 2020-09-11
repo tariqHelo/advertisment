@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
+Route::get('/loginuser', 'Auth/LoginController@showLoginForm')->name('loginUser');
+
+
 Route::get("/singleAd",'FrontEnd\HomeController@adSingle')->name("listings");
 Route::get("/",'FrontEnd\HomeController@index')->name("home-view");
 
@@ -25,10 +29,10 @@ Route::get('ads', function () {
     return view('website.ads');
 });
 
+Route::post("/comments",'FrontEnd\CommentFrontController@storeComment')->name("add_comment");
 
 Route::get("/view",'FrontEnd\PostAdController@PostAd')->name("post-view")->middleware('auth');
 Route::post("/postproduct",'FrontEnd\ProductController@store')->name("post-product")->middleware('auth');
-
 
 Route::post("/contactus",'FrontEnd\HomeController@postContact')->name("contactus");
 Route::get("/contact",'FrontEnd\HomeController@contactme')->name("contact");
@@ -36,7 +40,7 @@ Route::get("/contact",'FrontEnd\HomeController@contactme')->name("contact");
 Route::get("/about",'FrontEnd\HomeController@about')->name("about");
 Route::get("/contact",'FrontEnd\HomeController@contact')->name("contact");
 Route::get("/blog",'FrontEnd\HomeController@blog')->name("blog");
-Route::resource('post' , 'FrontEnd\PostController');
+Route::resource('front-post' , 'FrontEnd\PostController');
 
 Route::prefix('admin')->namespace("Admin")->middleware('auth')->group(function () {
     Route::get('home' , function(){return view('dashboard.layouts.app');});
@@ -48,16 +52,24 @@ Route::prefix('admin')->namespace("Admin")->middleware('auth')->group(function (
     Route::resource('products' , 'ProductController');
     Route::get("contact_me",'ContactMeController@index')->name('contactme');
     Route::resource("contact_",'ContactMeController');
-    
+
+    Route::resource("testimonial",'TestimonialController');
+    Route::get("testimonial",'TestimonialController@index')->name('x1');
+
     Route::get("post/edit/{id}",'PostController@edit');
     Route::post("post/edit/{id}",'PostController@update');
 
+    Route::post("product",'ProductController@store')->name('post-product');
 
+    
 Route::get("settings",'SettingController@setting')->name('settings');
 Route::post("settings",'SettingController@store')->name('post-settings');
 
+Route::get('/order_status/approve/{id}','OrderController@approve')->name('order.approve');
+Route::get('/order_status/{id}','OrderController@cancel')->name('order.cancel');
 
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('postnewslatteremail' , 'Admin\NewsletterController@create')->name('post.email');
+

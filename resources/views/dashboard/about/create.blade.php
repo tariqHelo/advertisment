@@ -14,18 +14,24 @@
 
      <div class="form-body">
             <div class="form-group has-success">
-               <label for="whyUs">description</label>
+               <label for="whyUs">whyUs</label>
              <textarea class="form-control" id="whyUs" name="whyUs">{{ old('whyUs') }}</textarea>
             </div>
     </div>
-{{--     <div class="form-group row">--}}
-{{--         <div class='col-sm-6'>--}}
-{{--                <label for="image">Image</label>--}}
-{{--                <div class="custom-file">--}}
-{{--                <input type="file" name="image" class="custom-file-input" id="image">--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+      <div class="form-body">
+            <div class="form-group has-success">
+               <label for="moreInfo">MyInfo</label>
+             <textarea class="form-control" id="moreInfo" name="moreInfo">{{ old('moreInfo') }}</textarea>
+            </div>
+    </div>
+    <div class="form-group row">
+        <div class='col-sm-6'>
+               <label for="imageFile">Image</label>
+               <div class="custom-file">
+               <input type="file" name="imageFile" class="custom-file-input" id="imageFile">
+           </div>
+       </div>
+    </div>
 
 
     <div class="form-check">

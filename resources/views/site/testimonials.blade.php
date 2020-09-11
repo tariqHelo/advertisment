@@ -8,18 +8,24 @@
         </div>
 
         <div class="slide-one-item home-slider owl-carousel">
+        @php $testimonials = \App\Models\Testimonial::get() @endphp
+
+        @foreach ($testimonials as $testimonial )
+            
           <div>
             <div class="testimonial">
               <figure class="mb-4">
-                <img src="{{asset('classyads/images/person_3.jpg')}}" alt="Image" class="img-fluid mb-3">
-                <p>John Smith</p>
+                <img src="{{asset('storage/'.$testimonial->image)}}" alt="Image" class="img-fluid mb-3">
+                <p>{{ $testimonial->name }}</p>
               </figure>
               <blockquote>
-                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                <p>{{$testimonial->description}}</p>
               </blockquote>
             </div>
           </div>
-          <div>
+        @endforeach
+
+          {{-- <div>
             <div class="testimonial">
               <figure class="mb-4">
                 <img src="{{asset('classyads/images/person_2.jpg')}}" alt="Image" class="img-fluid mb-3">
@@ -53,7 +59,7 @@
                 <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
               </blockquote>
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </div>

@@ -12,7 +12,7 @@
               </div>
             </div>
 
-        {!! $searchbar?? ""  !!}
+        {!! $searchbar ?? ""  !!}
 
           </div>
         </div>

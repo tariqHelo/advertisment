@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Post\CreateRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\EditRequest;
-use App\Http\Requests\Post\CreateRequest;
+use App\Http\Requests\Post\CreateProductRequest;
 
 class PostController extends Controller
 {
@@ -67,15 +68,13 @@ class PostController extends Controller
         if(!$request->published ){
             $request['published']=0;
         }
-     
+
         if($request->imageFile){
             $imageName = basename($request->imageFile->store("public"));
             $request['image'] = $imageName;
         }
-    
+
         Post::find($id)->update($request->all());
-       
-       
         session()->flash("msg", "Post Updated Successfully");
         return redirect(route("post.index"));
     }

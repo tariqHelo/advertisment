@@ -1,7 +1,8 @@
 @php
 use App\Models\Product ;
-$products = Product::orderBy('reviews')->take(6)->get();
-
+$products = Product::orderBy('reviews');
+$product_1 = $products->skip(0)->take(3)->get();
+$product_2 = $products->skip(3)->take(3)->get();
 @endphp
 <div class="site-section bg-light">
     <div class="container">
@@ -12,50 +13,50 @@ $products = Product::orderBy('reviews')->take(6)->get();
         </div>
         <div class="row mt-5">
             <div class="col-lg-6">
-              {{-- @for($i = 0 ; $i <= (count($products)/2) + 1  ; $i++ )
+               @foreach($product_1 as $product)
 
                 <div class="d-block d-md-flex listing">
-                    <a href="listings-single.html" class="img d-block" style="background-image: url('{{ asset('storage/'.$products[$i]->image) }}')"></a>
+                    <a href="listings-single.html" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
                     <div class="lh-content">
-                        <span class="category">{{ $products[$i]->category->title ?? "empty" }}</span>
+                        <span class="category">{{ $product->category->title ?? "empty" }}</span>
                         <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                        <h3><a href="listings-single.html">{{ $products[$i]->title }}</a></h3>
-                        <address> {{ $products[$i]->address }} </address>
+                        <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
+                        <address> {{ $product->address }} </address>
                         <p class="mb-0">
                             <span class="icon-star text-warning"></span>
                             <span class="icon-star text-warning"></span>
                             <span class="icon-star text-warning"></span>
                             <span class="icon-star text-warning"></span>
                             <span class="icon-star text-secondary"></span>
-                            <span class="review">({{$products[$i]->reviews}} Reviews)</span>
+                            <span class="review">({{$product->reviews}} Reviews)</span>
                         </p>
                     </div>
                 </div>
 
-@endfor
+@endforeach
             </div>
             <div class="col-lg-6">
-                @for($i = 3 ; $i >= (count($products)/2)   ; $i++ )
+                @foreach($product_2 as $product)
 
                     <div class="d-block d-md-flex listing">
-                        <a href="listings-single.html" class="img d-block" style="background-image: url('{{ asset('storage/'.$products[$i]->image) }}')"></a>
+                        <a href="listings-single.html" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
                         <div class="lh-content">
-                            <span class="category">{{ $products[$i]->category->title ?? "empty" }}</span>
+                            <span class="category">{{ $product->category->title ?? "empty" }}</span>
                             <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="listings-single.html">{{ $products[$i]->title }}</a></h3>
-                            <address> {{ $products[$i]->address }} </address>
+                            <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
+                            <address> {{ $product->address }} </address>
                             <p class="mb-0">
                                 <span class="icon-star text-warning"></span>
                                 <span class="icon-star text-warning"></span>
                                 <span class="icon-star text-warning"></span>
                                 <span class="icon-star text-warning"></span>
                                 <span class="icon-star text-secondary"></span>
-                                <span class="review">({{$products[$i]->reviews}} Reviews)</span>
+                                <span class="review">({{$product->reviews}} Reviews)</span>
                             </p>
                         </div>
                     </div>
 
-                @endfor --}}
+                @endforeach
             </div>
         </div>
     </div>

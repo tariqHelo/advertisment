@@ -83,6 +83,13 @@
                     <span class="arrow"></span>
                </a>
             </i>
+              <li class="nav-item start ">
+                <a href="{{ route('x1') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="title">testimonials</span>
+                    <span class="arrow"></span>
+               </a>
+            </i>
         </ul>
     </div>
 </div>

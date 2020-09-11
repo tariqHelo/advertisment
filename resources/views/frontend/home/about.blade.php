@@ -6,14 +6,14 @@
 <?php
     use App\Models\About;
 $abouts = About::first();
-?> 
+?>
  <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{asset('classyads/images/hero_1.jpg')}}" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
           <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
-            
-            
+
+
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
                 <h1>About Us</h1>
@@ -21,16 +21,16 @@ $abouts = About::first();
               </div>
             </div>
 
-            
+
           </div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section"  data-aos="fade">
       <div class="container">
-        
-       
+
+
         <div class="row mb-5">
           <div class="col-md-4 ml-auto">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam eveniet laudantium dignissimos atque labore excepturi perspiciatis ut fugit eius itaque iste quibusdam dolore consectetur reprehenderit. Illum molestiae nemo culpa optio.</p>
@@ -75,7 +75,7 @@ $abouts = About::first();
       </div>
     </div>
 
-    
+
     <div class="site-section">
       <div class="container">
         <div class="row align-items-center">
@@ -84,14 +84,7 @@ $abouts = About::first();
           </div>
           <div class="col-md-5 ml-auto">
             <h2 class="text-primary mb-3">Why Us</h2>
-            <p>{{ $abouts->whyUs	 }}</p>
-            <p class="mb-4">Adipisci dolore reprehenderit est et assumenda veritatis, ex voluptate odio consequuntur quo ipsa accusamus dicta laborum exercitationem aspernatur reiciendis perspiciatis!</p>
-
-            <ul class="ul-check list-unstyled primary">
-              <li>Adipisci dolore reprehenderit</li>
-              <li>Accusamus dicta laborum</li>
-              <li>Delectus sed labore</li>
-            </ul>
+            <p> {!!$abouts->whyUs	   !!}</p>
           </div>
         </div>
       </div>
@@ -106,7 +99,7 @@ $abouts = About::first();
           <div class="col-md-5 mr-auto order-md-1">
             <h2 class="text-primary mb-3">Customer Centered Co.</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus sed labore dolor enim optio odio at!</p>
-            
+
             <ul class="ul-check list-unstyled primary">
               <li>Adipisci dolore reprehenderit</li>
               <li>Accusamus dicta laborum</li>

@@ -18,20 +18,32 @@
              <textarea class="form-control" id="whyUs" name="whyUs">{{ $abouts->whyUs }}</textarea>
             </div>
     </div>
-     {{-- <div class="form-group row">
-         <div class='col-sm-6'>
-                <label for="image">Image</label>
-                <div class="custom-file">
-                <input type="file" name="image" value="{{ $abouts->image }}" class="custom-file-input" id="image">
+      <div class="form-body">
+            <div class="form-group has-success">
+               <label for="moreInfo">moreInfo</label>
+             <textarea class="form-control" id="moreInfo" name="moreInfo">{{ $abouts->moreInfo }}</textarea>
             </div>
-        </div>
-    </div> --}}
-
-
-    <div class="form-check">
-        <input {{ old('published')?"checked":"" }} value='1' type="checkbox" name='published' class="form-check-input" id="published">
-        <label class="form-check-label" for='published'>Published</label>
+     </div>
+     <div class="form-body">
+                    <div class="form-group form-md-line-input has-success">
+                        <input type="file" name="imageFile" class="form-control custom-file-input" id="form_control_1">
+                        <label for="form_control_1">Image</label>
+                    </div>
+                    <div>
+                        <img src="{{asset("storage/".$abouts->image)}}" width='240' class='img-thumbnail'>
+                    </div>
     </div>
+
+
+      <div class="md-checkbox-inline">
+                    <div class="md-checkbox">
+                        <input type="checkbox" id="checkbox6" class="md-check" name="published" value="1" {{ (old('published')?? $abouts->published)?"checked":"" }}>
+                        <label for="checkbox6">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span> Published </label>
+                    </div>
+                </div>
     <div class="card-footer mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>
         <a class='btn btn-default' href='{{ route("about.index") }}'>Cancel</a>

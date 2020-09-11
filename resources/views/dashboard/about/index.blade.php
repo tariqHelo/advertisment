@@ -9,7 +9,8 @@
         <tr class="success">
 
             <th>why us </th>
-
+            <th>moreInfo</th>
+            <th>Image</th>
             <th>active</th>
             <th>edit|delete</th>
         </tr>
@@ -19,6 +20,9 @@
             @foreach($abouts as $about)
                 <tr>
                     <td>{!!  $about->whyUs  !!} </td>
+                     <td>{!!  $about->moreInfo  !!} </td>
+                     <td><img width="100" src='{{ asset("storage/".$about->image)}}' ></td>
+
 {{--                    <td><img width='100' src='{{ asset('storage/'.$about->image) }}' /></td>--}}
                     <td> <input {{$about->published?"checked":""}} disabled type="checkbox"> </td>
                     <td width="20%">

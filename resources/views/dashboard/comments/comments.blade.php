@@ -16,9 +16,9 @@
         <table align="center" class="table mt-3 table-striped table-bordered">
             <thead>
             <tr>
-                <th>UserID</th>
-                <th>PostID</th>
-                <th>Description</th>
+                <th>name</th>
+                <th>Email</th>
+                <th>Comments</th>
                 <th>published</th>
                 <th>show|edit|delete</th>
             </tr>
@@ -26,19 +26,14 @@
             <tbody>
             @foreach($comments as $comment)
                 <tr>
-                    <td>{{ $comment->user_id }}</td>
-                    <td>{{ $comment->post_id }}</td>
-                    <td>{{ $comment->description }}</td>
+                    <td>{{ $comment->name }}</td>
+                    <td>{{ $comment->email }}</td>
+                    <td>{{ $comment->comment }}</td>
                     <td>
-                        @if($comment->published)
-                            <a href="{{route('comment.status',$comment->id)}}" style="width: 80px" class="btn btn-success btn-sm" >Active</a>
-                        @else
-                            <a href="{{route('comment.status',$comment->id)}}" style="width: 80px"  class="btn btn-warning btn-sm">Pending</a>
-
-                        @endif
+                        {{ $comment->published }}
                     </td>
                     <td>
-                        <a href="{{ route('comments.show', $comment->id) }}" class="btn btn-primary btn-sm"><i
+                        {{-- <a href="{{ route('comments.show', $comment->id) }}" class="btn btn-primary btn-sm"><i
                                 class='fa fa-eye'></i></a>
 
                         <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary btn-sm"><i
@@ -46,7 +41,7 @@
                         <a href="{{ route('delete-comment', $comment->id) }}">
                             <button onclick='return confirm("Are you sure??")' type="submit" class="btn btn-danger btn-sm">
                                 <i class='fa fa-trash'></i></button>
-                        </a>
+                        </a> --}}
 
 
                     </td>

@@ -58,7 +58,6 @@ $settings = Setting::first();
                     </p>
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

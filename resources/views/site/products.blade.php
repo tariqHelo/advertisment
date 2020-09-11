@@ -1,3 +1,7 @@
+@php
+    $products = \App\Models\Product::take(6)->get();
+
+@endphp
  <div class="site-section" data-aos="fade">
       <div class="container">
         <div class="row justify-content-center mb-5">
@@ -8,23 +12,25 @@
         </div>
 
         <div class="row">
+            @foreach($products as $product)
             <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-              
+
               <div class="listing-item">
                 <div class="listing-image">
-                  <img src="{{asset('classyads/images/img_1.jpg')}}" alt="Image" class="img-fluid">
+                  <img src="{{asset('storage/'.$product->image)}}" alt="Image" class="img-fluid">
                 </div>
                 <div class="listing-item-content">
                   <a href="#" class="bookmark" data-toggle="tooltip" data-placement="left" title="Bookmark"><span class="icon-heart"></span></a>
-                  <a class="px-3 mb-3 category" href="#">Car &amp; Vehicles</a>
-                  <h2 class="mb-1"><a href="#">Red Luxury Car</a></h2>
-                  <span class="address">West Orange, New York</span>
+                  <a class="px-3 mb-3 category" href="#">{{ $product->title }}</a>
+                  <h2 class="mb-1"><a href="#">{{ $product->category->title ?? "other category" }}</a></h2>
+                  <span class="address">{{ $product->address }}</span>
                 </div>
               </div>
 
             </div>
+            @endforeach
             {{-- <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-              
+
               <div class="listing-item">
                 <div class="listing-image">
                   <img src="{{asset('classyads/images/img_2.jpg')}}" alt="Image" class="img-fluid">
@@ -39,7 +45,7 @@
 
             </div>
             <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-              
+
               <div class="listing-item">
                 <div class="listing-image">
                   <img src="{{asset('classyads/images/img_3.jpg')}}" alt="Image" class="img-fluid">
@@ -54,7 +60,7 @@
 
             </div>
             <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-              
+
               <div class="listing-item">
                 <div class="listing-image">
                   <img src="{{asset('classyads/images/img_4.jpg')}}" alt="Image" class="img-fluid">
@@ -69,7 +75,7 @@
 
             </div>
             <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-              
+
               <div class="listing-item">
                 <div class="listing-image">
                   <img src="{{asset('classyads/images/img_2.jpg')}}" alt="Image" class="img-fluid">

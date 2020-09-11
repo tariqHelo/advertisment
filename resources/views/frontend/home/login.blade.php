@@ -24,8 +24,8 @@
 
             
 
-            <form action="#" class="p-5 bg-white">
-             
+            <form method="post"  action="{{ route('loginUser') }}"  class="p-5 bg-white">
+             @csrf
               <div class="row form-group">
                 
                 <div class="col-md-12">

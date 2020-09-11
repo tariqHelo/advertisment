@@ -70,4 +70,21 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function register(){
+
+        $user =new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password =  Hash::make($request->password);
+        $user->verification_code = shal(time());
+        $user->save();
+
+        if($user == null){
+            //send Email
+            //Show Message
+        }
+
+    }
 }

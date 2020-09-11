@@ -43,7 +43,10 @@
                     <label for="price">new price</label>
                     <input type="number" class="form-control" value="{{old('price')}}" id="price" name="price">
                 </div>
-
+                <div class="form-group ">
+                    <label for="model">model</label>
+                    <input type="text" class="form-control" value="{{old('model')}}" id="model" name="model">
+                </div>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea class="form-control" id="description" value="{{old('description')}}"

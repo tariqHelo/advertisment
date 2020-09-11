@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\About;
 use Illuminate\Http\Request;
-use App\Http\Requests\AboutRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\About\EditRequest;
+use App\Http\Requests\About\AboutRequest;
 
 
 
@@ -60,11 +61,11 @@ class AboutController extends Controller
      */
     public function store(AboutRequest $request)
     {
-        if(!$request->published){
-            $request['published']=0;
-        }
+        $request['published'] = $request['published'] ? 1 : 0;
+        $imageName = basename($request->imageFile->store('public'));
+        $request['image'] = $imageName;
         About::create($request->all());
-        Session::flash("msg","About created successfully");
+        session()->flash('msg' , 's: About created successfully');
         return redirect(route('about.index'));
     }
 
@@ -103,13 +104,19 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditRequest $request, $id)
     {
-        if(!$request->published){
+        if(!$request->published ){
             $request['published']=0;
         }
+     
+        if($request->imageFile){
+            $imageName = basename($request->imageFile->store("public"));
+            $request['image'] = $imageName;
+        }
+    
         About::find($id)->update($request->all());
-        session()->flash("msg", "The About was updated");
+        session()->flash("msg", "About Updated Successfully");
         return redirect(route("about.index"));
     }
 
