@@ -11,7 +11,7 @@
                    <div class="d-block d-md-flex listing vertical">
                   <a href="{{ route('listings')}}" class="img d-block" style="background-image: url('{{asset('storage/'.$listing->image)}}"></a>
                   <div class="lh-content">
-                    <span class="category">{{ $listing->category_id }}</span>
+                    <span class="category">{{ $listing->category->title ?? "other category" }}</span>
                     <a href="#" class="bookmark"><span class="icon-heart"></span></a>
                     <h3><a href="listings-single.html">{{ $listing->title }}</a></h3>
                     <address>{{ $listing->address }}</address>

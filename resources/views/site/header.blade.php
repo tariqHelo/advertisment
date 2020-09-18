@@ -38,8 +38,8 @@
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
 
-                <li class="{{ route('login') }}"><a href="login.html"><span class="border-left pl-xl-4"></span>Log In</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
+                <li class=""><a href="{{ route('login.user') }}"><span class="border-left pl-xl-4"></span>Log In</a></li>
+                <li><a href="{{ route('register.user') }}">Register</a></li>
 
                 <li><a href="{{ route('post-view') }}" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
               </ul>

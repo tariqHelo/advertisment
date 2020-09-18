@@ -1,3 +1,7 @@
+@extends("frontend.layout")
+@section("title","Contact Us")
+@section("content")
+
   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{asset('classyads/images/hero_1.jpg')}});" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -24,7 +28,7 @@
 
             
 
-            <form action="{{ route('regUser') }}" class="p-5 bg-white">
+            <form action="" class="p-5 bg-white">
              
               <div class="row form-group">
                 
@@ -50,7 +54,7 @@
 
               <div class="row form-group">
                 <div class="col-12">
-                  <p>Have an account? <a href="login.html">Log In</a></p>
+                  <p>Have an account? <a href="{{ route('login.user') }}">Log In</a></p>
                 </div>
               </div>
 
@@ -69,21 +73,6 @@
     </div>
 
     
-    <div class="newsletter bg-primary py-5">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <h2>Newsletter</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </div>
-          <div class="col-md-6">
-            
-            <form class="d-flex">
-              <input type="text" class="form-control" placeholder="Email">
-              <input type="submit" value="Subscribe" class="btn btn-white"> 
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+@include("site.subscribe")
+ @include("site.footer")
+ @endsection

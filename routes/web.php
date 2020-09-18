@@ -13,13 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
 
-Route::get('/loginuser', 'Auth/LoginController@showLoginForm')->name('loginUser');
+Auth::routes(['verify'=>true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+
+ Route::get('/user', 'FrontEnd\UserController@login')->name('login.user');
+ Route::get('/register', 'FrontEnd\UserController@register')->name('register.user');
 
 
 Route::get("/singleAd",'FrontEnd\HomeController@adSingle')->name("listings");
 Route::get("/",'FrontEnd\HomeController@index')->name("home-view");
+
+
 
 //
 //Route::get('/', function () {
@@ -70,6 +76,5 @@ Route::get('/order_status/{id}','OrderController@cancel')->name('order.cancel');
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::post('postnewslatteremail' , 'Admin\NewsletterController@create')->name('post.email');
 
