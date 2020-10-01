@@ -1,24 +1,35 @@
-
 <?php
 
-
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     protected $fillable = [
-        'product_id',
-        'user_id',
+        'name',
+        'product_name',
+        'Address',
+        'image',
+        'contact',
+        'description',
+        'rating_id',
+        'category_id',
         'quantity',
+        'reviews',
         'price',
         'total_price',
-        'order_status_id',
+        'order_status_id', 
+        'user_id'       
     ];
-    protected $appends = ["product_title","order_status_name"];
-    public function getProductTitleAttribute(){
+    protected $appends = ["category_title","category_rating","order_status_name"];
+    public function getCategoryTitleAttribute(){
         //return $this->product->title;
-        return Product::find($this->product_id)->title;
+        return Category::find($this->category_id)->title;
+    }
+    public function getRatingTitleAttribute(){
+        //return $this->product->title;
+        return Category::find($this->category_id)->rating;
     }
     public function getOrderStatusNameAttribute(){
         return OrderStatus::find($this->order_status_id)->title;
@@ -27,8 +38,8 @@ class Order extends Model
     public function user(){
         return $this->belongsTo("App\User");
     }
-    public function product(){
-        return $this->belongsTo("App\Models\Product");
+    public function category(){
+        return $this->belongsTo("App\Models\Category");
     }
     public function orderStatus(){
         return $this->belongsTo("App\Models\OrderStatus");

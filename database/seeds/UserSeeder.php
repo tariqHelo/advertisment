@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Models\Link;
-use App\Models\UserLink;
-class UsersSeeder extends Seeder
+
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,19 +12,15 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        if(User::where('email','admin@aa.com')->first()==null){
+        // reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-            $user = User::create(['email'=>'admin@aa.com','password'=>bcrypt('123456'),'name'=>'System Admin']);      
+        User::firstOrcreate([
+            "name" => config("project.seed.test_name"),
+            "email" => config("project.seed.test_email"),
+            "password" => bcrypt(config("project.seed.test_password")),
+         //   "phone_number" => config("project.seed.test_number"),
 
-            $links = Link::all();
-            
-            foreach($links as $link){
-                UserLink::create([
-                    'user_id' => $user->id,
-                    'link_id' => $link->id,
-                ]);
-            }
-
-        }
+        ]);
     }
 }

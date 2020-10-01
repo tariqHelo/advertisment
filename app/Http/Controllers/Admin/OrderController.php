@@ -21,9 +21,10 @@ class OrderController extends Controller
      */
     public function index()
     {
+        return view('dashboard.orders.index');
         $user_id = \request()->get('user_id') ;
         $price = \request()->get('price') ;
-        $product_id = \request()->get('product_id') ;
+        // $product_id = \request()->get('product_id') ;
         $order_status_id = \request()->get('order_status_id');
 
         $orders=Order::orderBy('id','desc');
@@ -66,7 +67,7 @@ class OrderController extends Controller
             "order_status_id"=>$order_status_id
         ]);
 
-        return view('admin.orders.index',compact('orders','status','users','products'));
+        return view('dashboard.orders.index',compact('orders','status','users','products'));
     }
 
 
@@ -96,7 +97,7 @@ class OrderController extends Controller
         $orders=Order::all();
         $order = Order::find($id);
 //        dd($comments);
-        return view('admin.orders.show')->with('order' , $order)->with('orders',$orders);
+        return view('dashboard.orders.show')->with('order' , $order)->with('orders',$orders);
     }
     public function destroy($id)
     {

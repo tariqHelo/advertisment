@@ -101,7 +101,7 @@ $abouts = About::first();
             <div class="p-4 mb-3 bg-white">
                 
               <h3 class="h5 text-black mb-3">More Info</h3>
-              <p>{{ $abouts->whyUs}}</p>
+              <p>{{ $abouts->whyUs ?? ""}} </p>
               {{-- <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p> --}}
             </div>
 

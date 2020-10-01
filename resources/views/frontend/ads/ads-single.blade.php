@@ -134,7 +134,6 @@
       </div>
     </div>
 
-      <div class="site-section bg-light">
         <div class="container">
         @include('site.trending')
       </div>

@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\ContactMe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderCreateRequest;
 use App\Http\Requests\Contact\CreateRequest;
 
 class HomeController extends Controller
@@ -21,7 +22,6 @@ class HomeController extends Controller
 
     }
     public function about(){
-
         return view("frontend.home.about");
     }
     public function contact(){
@@ -38,7 +38,9 @@ class HomeController extends Controller
         return redirect(route("contact"));
     }
 
-    public function contactme(){
-     return view("frontend.home.contact");
-    }
+    // public function contactme(){
+    //  return view("frontend.home.contact");
+    // }
+
+    
 }

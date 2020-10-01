@@ -54,7 +54,7 @@
 
               <div class="row form-group">
                 <div class="col-12">
-                  <p>Have an account? <a href="{{ route('login.user') }}">Log In</a></p>
+                  <p>Have an account? <a href="">Log In</a></p>
                 </div>
               </div>
 

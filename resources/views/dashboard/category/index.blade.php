@@ -3,7 +3,7 @@
 @section("content")
 
     <form class='row'>
-        <div class='col-sm-6'>
+        <div class='col-sm-4'>
             <input type='text' value='{{request()->get("q")}}' class="form-control" placeholder="enter your search"
                    name="q"/></div>
         <div class='col-sm-2'>
@@ -16,9 +16,11 @@
             <button type='submit' class='btn btn-primary'><i class="fa fa-search"></i>search</button>
         </div>
         <div class="col-2">
-
+            {{-- <a href="{{ route('categories.create') }}" class="btn btn-success">Create New Category</a> --}}
             <a href="{{ route('categories.create') }}" class="btn btn-success">Create New Category</a>
+
         </div>
+        
     </form>
     @if($categories->count()>0)
         <br/>
@@ -26,6 +28,7 @@
             <thead>
             <tr class="success">
                 <th> Title</th>
+                <th> Rating</th>
                 <th> Icon</th>
                 <th>published</th>
                 <th width="20%"></th>
@@ -36,6 +39,7 @@
             @foreach($categories as $category)
                 <tr>
                     <td>{{ $category->title }}</td>
+                    <td>{{ $category->rating }}</td>
                     <td>{{ $category->icon }}</td>
                     <td><input type="checkbox" disabled {{ $category->published?"checked":"" }} /></td>
                     <td width="20%">

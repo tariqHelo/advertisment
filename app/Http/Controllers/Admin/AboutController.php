@@ -21,6 +21,7 @@ class AboutController extends Controller
      */
     public function index()
     {
+        
         $abouts = About::orderBy('id');
 
         $q=request()->get("q")??"";

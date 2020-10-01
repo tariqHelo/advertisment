@@ -28,45 +28,65 @@
 
             
 
-            <form method="post"  action="  class="p-5 bg-white">
-             @csrf
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control">
-                </div>
-                  {{-- @error('email')
-                          <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                           </span>
-                    @enderror --}}
-              </div>
+             <form class="w-full p-6" method="POST" action="{{ route('admin.do_login') }}">
+                        @csrf
 
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label class="text-black" for="subject">Password</label> 
-                  <input type="password" id="subject" class="form-control">
-                </div>
+                        <div class="flex flex-wrap mb-6">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('E-Mail Address') }}:
+                            </label>
 
-              </div>
+                            <input id="email" type="email" class="form-input w-full @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-              <div class="row form-group">
-                <div class="col-12">
-                  <p>No account yet? <a href="">">Register</a></p>
-                </div>
-              </div>
+                            @error('email')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
 
-            
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="Sign In" class="btn btn-primary py-2 px-4 text-white">
-                </div>
-              </div>
+                        <div class="flex flex-wrap mb-6">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">
+                                {{ __('Password') }}:
+                            </label>
 
-  
-            </form>
+                            <input id="password" type="password" class="form-input w-full @error('password') border-red-500 @enderror" name="password" required>
+
+                            @error('password')
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div class="flex mb-6">
+                            <label class="inline-flex items-center text-sm text-gray-700" for="remember">
+                                <input type="checkbox" name="remember" id="remember" class="form-checkbox" {{ old('remember') ? 'checked' : '' }}>
+                                <span class="ml-2">{{ __('Remember Me') }}</span>
+                            </label>
+                        </div>
+
+                        <div class="flex flex-wrap items-center">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                {{ __('Login') }}
+                            </button>
+
+                            @if (Route::has('password.request'))
+                                <a class="text-sm text-blue-500 hover:text-blue-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
+                                    {{ __("Don't have an account?") }}
+                                    <a class="text-blue-500 hover:text-blue-700 no-underline" href="{{ route('register') }}">
+                                        {{ __('Register') }}
+                                    </a>
+                                </p>
+                            @endif
+                        </div>
+                    </form>
           </div>
           
         </div>

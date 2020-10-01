@@ -14,6 +14,10 @@
                     <input value='{{old("title")}}' type="text" autofocus class="{{ $errors->has('title')?"is-invalid":""}} form-control" id="title" name="title" placeholder="Enter Category Name">
                   </div>
                    <div class="form-group">
+                    <label for="rating">Rating</label>
+                    <input value='{{old("rating")}}' type="text" autofocus class="{{ $errors->has('rating')?"is-invalid":""}} form-control" id="rating" name="rating" placeholder="Enter Category Name">
+                  </div>
+                   <div class="form-group">
                     <label for="title">Icon</label>
                     <input value='{{old("icon")}}' type="text" autofocus class="{{ $errors->has('icon')?"is-invalid":""}} form-control" id="icon" name="icon" placeholder="Enter Category icon">
                   </div>

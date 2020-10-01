@@ -14,67 +14,92 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes(['verify'=>true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
-
- Route::get('/user', 'FrontEnd\UserController@login')->name('login.user');
- Route::get('/register', 'FrontEnd\UserController@register')->name('register.user');
-
-
-Route::get("/singleAd",'FrontEnd\HomeController@adSingle')->name("listings");
-Route::get("/",'FrontEnd\HomeController@index')->name("home-view");
-
-
-
-//
-//Route::get('/', function () {
-//    return view('website.index');
-//});
-Route::get('ads', function () {
-    return view('website.ads');
+Auth::routes();
+Route::get('/', function () {
+    return view('website.index');
 });
-
-Route::post("/comments",'FrontEnd\CommentFrontController@storeComment')->name("add_comment");
 
 Route::get("/view",'FrontEnd\PostAdController@PostAd')->name("post-view")->middleware('auth');
-Route::post("/postproduct",'FrontEnd\ProductController@store')->name("post-product")->middleware('auth');
 
-Route::post("/contactus",'FrontEnd\HomeController@postContact')->name("contactus");
-Route::get("/contact",'FrontEnd\HomeController@contactme')->name("contact");
+  Route::get('/home', 'HomeController@index')->name('home');
+  Route::get("/singleAd",'FrontEnd\HomeController@adSingle')->name("listings");
+  Route::get("/",'FrontEnd\HomeController@index')->name("home-view");
+  Route::post("/comments",'FrontEnd\CommentFrontController@storeComment')->name("add_comment");
 
-Route::get("/about",'FrontEnd\HomeController@about')->name("about");
-Route::get("/contact",'FrontEnd\HomeController@contact')->name("contact");
-Route::get("/blog",'FrontEnd\HomeController@blog')->name("blog");
-Route::resource('front-post' , 'FrontEnd\PostController');
+  
+  Route::post("/contactus",'FrontEnd\HomeController@postContact')->name("contactus");
+  
+  Route::get("/about",'FrontEnd\HomeController@about')->name("about");
+  Route::get("/contact",'FrontEnd\HomeController@contact')->name("contact");
+  Route::get("/blog",'FrontEnd\HomeController@blog')->name("blog");
+  Route::resource('front-post' , 'FrontEnd\PostController');
+  Route::post('postnewslatteremail' , 'FrontEnd\NewsletterController@create')->name('post.email');
 
-Route::prefix('admin')->namespace("Admin")->middleware('auth')->group(function () {
-    Route::get('home' , function(){return view('dashboard.layouts.app');});
-    Route::resource("categories",'CategoryController');
-    Route::resource("comments",'CommentController');
-    Route::resource("about",'AboutController');
-    Route::resource("post",'PostController');
-    Route::get("post/delete/{id}",'PostController@destroy')->name('post.delete');
-    Route::resource('products' , 'ProductController');
-    Route::get("contact_me",'ContactMeController@index')->name('contactme');
-    Route::resource("contact_",'ContactMeController');
 
-    Route::resource("testimonial",'TestimonialController');
-    Route::get("testimonial",'TestimonialController@index')->name('x1');
 
-    Route::get("post/edit/{id}",'PostController@edit');
-    Route::post("post/edit/{id}",'PostController@update');
 
-    Route::post("product",'ProductController@store')->name('post-product');
 
-    
-Route::get("settings",'SettingController@setting')->name('settings');
-Route::post("settings",'SettingController@store')->name('post-settings');
-
-Route::get('/order_status/approve/{id}','OrderController@approve')->name('order.approve');
-Route::get('/order_status/{id}','OrderController@cancel')->name('order.cancel');
+Route::group([
+    "namespace" => "Auth",
+    "prefix" => "admin"
+],function() {
+    Route::get("login", "AdminLoginController@showLoginForm")->name("admin.show_login");
+    Route::post("login", "AdminLoginController@login")->name("admin.do_login");
+    Route::post("logout", "AdminLoginController@logout")->name("admin.logout");
 
 });
 
-Route::post('postnewslatteremail' , 'Admin\NewsletterController@create')->name('post.email');
+
+Route::post("/order",'FrontEnd\StoreOrderController@store')->name("x5")->middleware('auth');
+
+
+
+Route::group([
+    "prefix" => "admin",
+    "middleware" => [
+    "assign.guard:admin,admin/login"
+    ],
+], function() {
+    Route::get("/dashboard", "AdminController@index")->name("dashboard");
+
+    Route::get("/just-for-admins", function(){
+        return "just for admins";
+    })->middleware("role:administrator");
+    Route::get("/moderate", function(){
+        return "moderate";
+    })->middleware("role:administrator|moderator");
+
+    Route::resource("categories",'Admin\CategoryController');
+    Route::resource("comments",'Admin\CommentController');
+    Route::resource("about",'Admin\AboutController');
+    Route::resource("post",'Admin\PostController');
+    Route::get("post/delete/{id}",'Admin\PostController@destroy')->name('post.delete');
+    Route::resource('products' , 'Admin\ProductController');
+    Route::get("contact_me",'Admin\ContactMeController@index')->name('contactme');
+    Route::resource("contact_",'Admin\ContactMeController');
+
+    Route::resource("testimonial",'Admin\TestimonialController');
+    Route::get("testimonial",'Admin\TestimonialController@index')->name('x1');
+
+    Route::get("post/edit/{id}",'Admin\PostController@edit');
+    Route::post("post/edit/{id}",'Admin\PostController@update');
+
+    Route::post("product",'Admin\ProductController@store')->name('post-product');
+   
+    Route::get("/order","Admin\OrderController@index")->name('order');
+  
+    Route::get("/order/{id}/delete","Admin\OrderController@destroy")->name('delete-order');
+    Route::get('/order-done/{id}','Admin\OrderController@done')->name('order.done');
+    Route::get('/order-pending/{id}','Admin\OrderController@pending')->name('order.pending');
+    Route::get('/order-cancel/{id}','Admin\OrderController@cancel')->name('order.cancel');
+
+
+    Route::get('/order_status/approve/{id}','Admin\OrderController@approve')->name('order.approve');
+    // Route::get('/order_status/{id}','Admin\OrderController@cancel')->name('order.cancel');
+
+
+Route::get("settings",'Admin\SettingController@setting')->name('settings');
+Route::post("settings",'Admin\SettingController@store')->name('post-settings');   
+
+});
 

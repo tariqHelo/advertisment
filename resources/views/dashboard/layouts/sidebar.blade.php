@@ -39,6 +39,13 @@
 
             </li>
             <li class="nav-item start ">
+            <a href="{{route('order')}}" class="nav-link nav-toggle">
+                <i class="fa fa-cube"></i>
+                <span class="title">orders</span>
+                <span class="arrow"></span>
+            </a>
+        </li>
+            <li class="nav-item start ">
                 <a href="{{route('about.index')}}" class="nav-link nav-toggle">
                     <i class="fa fa-briefcase"></i>
                     <span class="title">about</span>
@@ -87,6 +94,20 @@
                 <a href="{{ route('x1') }}" class="nav-link nav-toggle">
                     <i class="fa fa-bullhorn"></i>
                     <span class="title">testimonials</span>
+                    <span class="arrow"></span>
+               </a>
+            </i>
+              <li class="nav-item start ">
+                <a href="" class="nav-link nav-toggle">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="title">rating</span>
+                    <span class="arrow"></span>
+               </a>
+            </i>
+              <li class="nav-item start ">
+                <a href="" class="nav-link nav-toggle">
+                    <i class="fa fa-bullhorn"></i>
+                    <span class="title">newsletter</span>
                     <span class="arrow"></span>
                </a>
             </i>

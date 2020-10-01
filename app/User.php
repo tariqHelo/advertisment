@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone_number', 'isVerified'
     ];
 
     /**
@@ -36,10 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function links()
-    {
-        return $this->belongsToMany('App\Models\Link','users_links');                                                                        
-        //return $this->belongsToMany('App\Models\Link','users_links','user_id','link_id');
-    }
 }

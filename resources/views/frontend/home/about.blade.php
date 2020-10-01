@@ -84,7 +84,7 @@ $abouts = About::first();
           </div>
           <div class="col-md-5 ml-auto">
             <h2 class="text-primary mb-3">Why Us</h2>
-            <p> {!!$abouts->whyUs	   !!}</p>
+            <p>{{  $abouts->whyUs	 ?? ""   }}</p>
           </div>
         </div>
       </div>

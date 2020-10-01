@@ -2,7 +2,6 @@
 @section("title","index Us")
 @section("content")
  @include("site.header")
-    @include("site.navSearch")
       @include("site.service")
          @include("site.ads")
         @include("site.products")
